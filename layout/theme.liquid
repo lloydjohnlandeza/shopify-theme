@@ -1,0 +1,27 @@
+<html>
+  <head>
+    {{ 'application.css' | asset_url | stylesheet_tag }}
+    <style>
+      html {
+        font-family: 'kumbh-sans';
+      }
+      @font-face {
+        font-family: 'kumbh-sans';
+        src: url("{{'KumbhSans-Regular.ttf' | asset_url}}");
+        font-weight: 300;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'kumbh-sans';
+        src: url("{{'KumbhSans-Bold.ttf' | asset_url}}");
+        font-weight: 600;
+        font-style: normal;
+      }
+    </style>
+    {{ content_for_header }}
+  </head>
+  <body>
+    {% render 'header' %}
+    {{ content_for_layout }}
+  </body>
+</html>
