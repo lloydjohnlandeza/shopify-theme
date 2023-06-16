@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     {{ 'application.css' | asset_url | stylesheet_tag }}
     <style>
       html {
@@ -23,5 +24,8 @@
   <body>
     {% render 'header' %}
     {{ content_for_layout }}
+
+    <script src="{{ 'icons.js' | asset_url }}" defer="defer"></script>
+    {{ 'add-to-cart.js' | asset_url | script_tag }}
   </body>
 </html>

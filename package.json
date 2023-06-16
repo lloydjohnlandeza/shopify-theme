@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tailwind:watch": "tailwindcss --watch -i css/application.css -o assets/application.css.liquid"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +14,9 @@
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2"
+  },
+  "devDependencies": {
+    "jsdoc": "^4.0.2",
+    "typescript": "^5.1.3"
   }
 }

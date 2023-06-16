@@ -1,0 +1,36 @@
+<header-cart-dropdown
+  is_open="false"
+  item_count="{{cart.item_count}}"
+>
+  <div
+    id="cartContent"
+    class="fixed left-0 right-0 top-24 z-30 mx-auto max-w-[360px] rounded-md bg-my-white py-6 shadow-xl"
+  >
+    <h4 class="mb-4 border-b border-my-grayish-blue px-4 pb-4 font-bold">Cart</h4>
+    <ul class="px-4">
+      {%- for item in cart.items -%}
+        <li class="grid grid-cols-[auto_1fr_auto] gap-2">
+          <img
+            class="h-14 w-14 rounded-sm object-cover"
+            src="{{ item.image | image_url: width: 300 }}"
+            alt="{{ item.image.alt | escape }}"
+            loading="lazy"
+          >
+          <div class="text-my-very-dark-blue">
+            <h6 class="text-sm">{{ item.title }}</h6>
+            <span class="text-sm">
+              {{ item.price | money }} x {{ item.quantity }}
+              <span class="font-bold">{{ item.line_price | money }}</span>
+            </span>
+          </div>
+          <button data-delete="{{item.key}}" class="self-center">
+            <base-icons icon_name="delete"></base-icons>
+          </button>
+        </li>
+      {%- endfor -%}
+    </ul>
+    <div class="px-4">
+      <button class="mx-auto mt-5 w-full rounded-md bg-my-orange py-4 text-my-white">Checkout</button>
+    </div>
+  </div>
+</header-cart-dropdown>

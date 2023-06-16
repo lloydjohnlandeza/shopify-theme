@@ -19,6 +19,6 @@ module.exports = {
     },
   },
   plugins: [],
-  content: ["./**/*.liquid"],
+  content: ["./**/*.liquid", "./assets/*.js"],
 }
 

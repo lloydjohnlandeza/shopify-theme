@@ -1,0 +1,14 @@
+<base-header-cart
+  class="flex flex-1 justify-end self-center"
+  item_count="{{ cart.item_count}}"
+>
+  <div class="relative mr-4 flex flex-1 justify-end self-center">
+    <button id="cartBtn" class="text-my-dark-grayish-blue hover:text-my-very-dark-blue">
+      <base-icons icon_name="cart"></base-icons>
+    </button>
+    <div class="pointer-events-none absolute right-[-10px] top-[-10px] inline-flex rounded-full bg-my-orange px-2">
+      <span id="item_count" class="select-none text-xs text-my-white">{{ cart.item_count }}</span>
+    </div>
+    {%- section 'header-cart-dropdown' -%}
+  </div>
+</base-header-cart>
