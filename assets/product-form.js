@@ -8,6 +8,7 @@ if (!customElements.get('product-form')) {
         this.form = this.querySelector('form');
         this.form.addEventListener('submit', this.onSubmitHandler.bind(this));
         this.submitButton = this.querySelector('[type="submit"]');
+        this.headerCartDropdown = document.querySelector('header-cart-dropdown')
 
       }
 
@@ -33,10 +34,8 @@ if (!customElements.get('product-form')) {
         const data = await response.json()
         const html = new DOMParser().parseFromString(data.sections['header-cart-dropdown'], 'text/html')
         const headerDropdown = html.querySelector('header-cart-dropdown')
-        console.log(headerDropdown.getAttribute('item_count'))
-        // // this.content = html.querySelector('header-cart-dropdown').innerHTML
-        // document.querySelector('base-header-cart').item_count = data.item_count
         document.querySelector('base-header-cart').item_count = headerDropdown.getAttribute('item_count')
+        this.headerCartDropdown.content = headerDropdown.innerHTML
         this.submitButton.setAttribute('aria-disabled', false);
       }
 
