@@ -10,14 +10,23 @@ class HeaderCartDropdown extends HTMLElement {
     this.onDelete = this.onDelete.bind(this)
     this.deleteButtons = [];
   }
+
   get is_open() {
     return this._is_open;
   }
   set is_open(value) {
     this._is_open = value === 'true';
-    this.setAttribute('is_open', value); // Update the corresponding attribute
+    this.setAttribute('is_open', value);
   }
 
+  set content(val){
+    this._content = val;
+    this.render();
+  }
+
+  get content(){
+      return this._content
+  }
   connectedCallback() {
     this.render();
   }
@@ -27,27 +36,24 @@ class HeaderCartDropdown extends HTMLElement {
       this._is_open = newValue === 'true';
     }
     this.render();
-    if (newValue === 'true') {
-      this.attachedEvents();
-    } else {
-      this.removeEvents();
-    }
   }
 
   attachedEvents() {
-    this.deleteButtons.forEach((btn) => {
-      btn.addEventListener('click', (e) => {
+    this.deleteButtons?.forEach((btn) => {
+      const onDeleteHandler = (event) => {
+        console.log(event)
         event.preventDefault()
         this.onDelete(btn);
-      });
+      };
+      btn.addEventListener('click', onDeleteHandler);
+      btn.onDeleteHandler = onDeleteHandler;
     });
   }
 
   removeEvents() {
-    this.deleteButtons.forEach((btn) => {
-      btn.removeEventListener('click', (e) => {
-        event.preventDefault()
-      });
+    this.deleteButtons?.forEach((btn) => {
+      const onDeleteHandler = btn.onDeleteHandler;
+      btn.removeEventListener('click', onDeleteHandler);
     });
     this.deleteButtons = [];
   }
@@ -70,19 +76,19 @@ class HeaderCartDropdown extends HTMLElement {
       body: body
     })
     const data = await response.json()
-    const html = new DOMParser().parseFromString(data.sections['header-cart-dropdown'], 'text/html')
-    this.content = html.querySelector('header-cart-dropdown').innerHTML
+    const headerCartDropdownFromApiResponse = new DOMParser().parseFromString(data.sections['header-cart-dropdown'], 'text/html')
+    this.content = headerCartDropdownFromApiResponse.querySelector('header-cart-dropdown').innerHTML
     document.querySelector('base-header-cart').item_count = data.item_count
-
-    this.innerHTML = this.content
   }
 
   render() {
     if (!this._is_open) {
+      this.removeEvents();
       return this.innerHTML = ''
     }
-    this.innerHTML = this.content;
+    this.innerHTML = this._content;
     this.deleteButtons = Array.from(this.querySelectorAll('button[data-delete]'));
+    this.attachedEvents()
   }
 
 }

@@ -4,12 +4,46 @@ if (!customElements.get('product-form')) {
     class ProductForm extends HTMLElement {
       constructor() {
         super();
-
         this.form = this.querySelector('form');
         this.form.addEventListener('submit', this.onSubmitHandler.bind(this));
         this.submitButton = this.querySelector('[type="submit"]');
         this.headerCartDropdown = document.querySelector('header-cart-dropdown')
+        this.quantityInput = this.querySelector('[name="quantity"]')
+        this.incrementBtn = this.querySelector('#increment')
+        this.decrementBtn = this.querySelector('#decrement')
+        this.buttons = [this.decrementBtn, this.incrementBtn]
+        this.updateQuantity = this.updateQuantity.bind(this)
+        this.attachedEvents()
+      }
 
+      disconnectedCallback () {
+        this.removeEvents()
+      }
+
+      attachedEvents() {
+        this.buttons.forEach((btn) => {
+          const updateQuantity = () => this.updateQuantity(btn.id === 'increment')
+          btn.addEventListener('click', updateQuantity);
+          btn.updateQuantity = updateQuantity
+        });
+      }
+
+      removeEvents() {
+        this.buttons.forEach((btn) => {
+          btn.removeEventListener('click', btn.updateQuantity);
+        });
+        this.buttons = [];
+      }
+
+      updateQuantity(increment) {
+        let qty = parseInt(this.quantityInput.value)
+        if (qty === 1 && !increment) return
+        if (increment) {
+          qty++
+        } else {
+          qty--
+        }
+        this.quantityInput.value = qty
       }
 
       async onSubmitHandler(evt) {
@@ -40,18 +74,7 @@ if (!customElements.get('product-form')) {
       }
 
       handleErrorMessage(errorMessage = false) {
-        // if (this.hideErrors) return;
 
-        // this.errorMessageWrapper =
-        //   this.errorMessageWrapper || this.querySelector('.product-form__error-message-wrapper');
-        // if (!this.errorMessageWrapper) return;
-        // this.errorMessage = this.errorMessage || this.errorMessageWrapper.querySelector('.product-form__error-message');
-
-        // this.errorMessageWrapper.toggleAttribute('hidden', !errorMessage);
-
-        // if (errorMessage) {
-        //   this.errorMessage.textContent = errorMessage;
-        // }
       }
     }
   );
