@@ -34,7 +34,7 @@ class Header extends HTMLElement {
       <div class="mx-auto flex max-w-7xl gap-2 bg-my-white px-2 py-4">
         <button
           id="hamburger-button"
-          class="relative z-20 h-11 w-8 self-center bg-white text-my-very-dark-blue focus:outline-none"
+          class="relative z-40 h-11 w-8 self-center bg-white text-my-very-dark-blue focus:outline-none"
         >
           <span class="sr-only">Open main menu</span>
           <div id="hamburger-lines" class="absolute left-1/2 top-1/2 block w-4 -translate-x-1/2 -translate-y-1/2 transform">
