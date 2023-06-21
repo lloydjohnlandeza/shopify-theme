@@ -1,6 +1,6 @@
 class BaseSidebar extends HTMLElement {
   static get observedAttributes() {
-    return ['is_open']; // List of properties to observe for changes
+    return ["is_open"]; // List of properties to observe for changes
   }
 
   constructor() {
@@ -14,19 +14,19 @@ class BaseSidebar extends HTMLElement {
   }
 
   set is_open(value) {
-    this._is_open = value === 'true';
-    this.setAttribute('is_open', value); // Update the corresponding attribute
+    this._is_open = value === "true";
+    this.setAttribute("is_open", value); // Update the corresponding attribute
   }
 
   connectedCallback() {
     this.render();
-    this.sidebar = document.querySelector('#sidebar');
-    this.overlay = document.querySelector('#overlay');
+    this.sidebar = document.querySelector("#sidebar");
+    this.overlay = document.querySelector("#overlay");
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name === 'is_open') {
-      this._is_open = newValue === 'true';
+    if (name === "is_open") {
+      this._is_open = newValue === "true";
       this.render(); // Update the component when the property changes
     }
   }
@@ -34,13 +34,14 @@ class BaseSidebar extends HTMLElement {
   render() {
     const links = ["Collections", "Men", "Women", "About", "Contact"];
     if (!this._is_open) {
-      return this.innerHTML = ``
+      return (this.innerHTML = ``);
     }
     this.innerHTML = `
-    <div id="overlay" class="fixed bottom-0 left-0 right-0 top-0 z-40 bg-black/[.75]">
+    <div id="overlay" class="fixed bottom-0 left-0 right-0 top-0 z-20 bg-black/[.75]">
       <div id="sidebar" class="h-screen w-72 bg-my-white pt-20">
         <ul>
-          ${links.map((link, key) =>
+          ${links.map(
+            (link, key) =>
               `<li class="px-4 py-2 text-lg font-bold">
                 ${link}
               </li>`
@@ -52,4 +53,4 @@ class BaseSidebar extends HTMLElement {
   }
 }
 
-customElements.define('base-sidebar', BaseSidebar);
+customElements.define("base-sidebar", BaseSidebar);

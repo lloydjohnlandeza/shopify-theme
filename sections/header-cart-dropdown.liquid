@@ -1,5 +1,8 @@
-<header-cart-dropdown is_open="false" item_count="{{cart.item_count}}">
-  <div id="cartContent" class="fixed left-0 right-0 top-24 z-30 mx-auto max-w-[360px] rounded-md bg-my-white py-6 shadow-xl">
+<header-cart-dropdown
+  class="hidden"
+  is_open="false"
+  item_count="{{cart.item_count}}">
+  <div id="cartContent" class="fixed md:absolute md:left-[unset] md:-right-8 md:top-10 left-0 right-0 top-24 z-20 mx-auto w-full max-w-[360px] rounded-md bg-my-white py-6 shadow-xl">
     <h4 class="mb-5 border-b border-my-grayish-blue px-4 pb-4 font-bold">Cart</h4>
     <ul class="px-4 max-h-[300px] overflow-auto">
       {%- if cart == empty -%}
@@ -9,7 +12,7 @@
       {% else %}
 
         {%- for item in cart.items -%}
-          <li class="grid grid-cols-[auto_1fr_auto] gap-2 border-b border-my-grayish-blue mb-4 pb-4 last:border-transparent last:pb-0">
+          <li class="text-my-grayish-blue grid grid-cols-[auto_1fr_auto] gap-4 border-b border-my-grayish-blue mb-4 pb-4 last:border-transparent last:pb-0">
             <img
               class="h-14 w-14 rounded-sm object-cover"
               src="{{ item.image | image_url: width: 300 }}"
@@ -22,7 +25,7 @@
                 <span class="font-bold">{{ item.line_price | money }}</span>
               </span>
             </div>
-            <button data-delete="{{item.key}}" class="self-center">
+            <button data-delete="{{item.key}}" class="self-center text-my-grayish-blue">
               <base-icons icon_name="delete"></base-icons>
             </button>
           </li>
