@@ -22,7 +22,7 @@
           <div data-thumbnail-id="{{ forloop.index | minus: 1 }}" class="hover:border-my-orange hover:border-2 rounded-lg border-2 border-my-white overflow-hidden">
             <img
               src="{{ image | image_url: height: 100 }}"
-              class="cursor-pointer transition duration-500 ease-in-out object-cover max-w-[96px] w-full aspect-square filter opacity-50 hover:filter hover:opacity-50"
+              class="cursor-pointer transition duration-500 ease-in-out object-cover max-w-[96px] w-full aspect-square filter opacity-50 hover:filter hover:opacity-50 rounded-lg"
               loading="lazy"
               alt="{{product.alt}}">
           </div>
@@ -74,7 +74,7 @@
       <div class="m-4 md:max-w-[450px]">
         <h6 class="text-sm mb-2 font-bold text-my-orange">SNEAKER COMPANY</h6>
         <h1 class="text-3xl font-bold text-my-very-dark-blue md:text-4xl">{{ product.title }}</h1>
-        <p class="mt-4 md:mt-12 text-my-dark-grayish-blue">
+        <p class="mt-4 md:mt-10 text-my-dark-grayish-blue">
           {{ product.description | strip_html }}
         </p>
         <div class="my-6 flex items-center md:inline-grid md:grid-cols-[auto_auto]">
