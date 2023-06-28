@@ -22,10 +22,9 @@
     {{ content_for_header }}
   </head>
   <body>
-    {% render 'header' %}
+    {% section 'header' %}
     {{ content_for_layout }}
 
     <script src="{{ 'icons.js' | asset_url }}" defer="defer"></script>
-
   </body>
 </html>

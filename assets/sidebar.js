@@ -40,12 +40,14 @@ class BaseSidebar extends HTMLElement {
     <div id="overlay" class="fixed bottom-0 left-0 right-0 top-0 z-20 bg-black/[.75]">
       <div id="sidebar" class="h-screen w-72 bg-my-white pt-20">
         <ul>
-          ${links.map(
-            (link, key) =>
-              `<li class="px-4 py-2 text-lg font-bold">
+          ${links
+            .map(
+              (link, key) =>
+                `<li class="px-4 py-2 text-lg font-bold">
                 ${link}
               </li>`
-          )}
+            )
+            .join("")}
         </ul>
       </div>
     </div>
