@@ -1,0 +1,61 @@
+<div class="max-w-7xl mx-auto px-2 py-10 gap-4 grid grid-cols-1 md:px-4 md:grid-cols-[auto_1fr] md:gap-9 mb-52 ">
+  {%- if section.settings.image != blank -%}
+    {{
+      section.settings.image
+      | image_url: width: 500
+      | image_tag:
+        loading: 'lazy',
+        width: 500,
+        height: 500,
+        class: 'object-cover rounded-md mb-4 mx-auto w-full max-w-md md:mb-0 md:max-w-sm lg:max-w-md xl:max-w-lg lg:ml-0'
+    }}
+  {% endif %}
+  <div class="text-center max-w-lg mx-auto flex flex-col gap-4 md:gap-2 lg:gap-4 md:max-w-none md:left-0 md:my-auto md:text-left md:ml-0">
+    <h2 class="text-3xl font-bold md:text-4xl md:max-w-xs lg:max-w-md lg:text-5xl xl:max-w-[590px] xl:text-6xl xl:tracking-wider">
+      {{ section.settings.title }}
+    </h2>
+    <p class="md:text-lg lg:text-xl xl:max-w-xl">
+      {{ section.settings.description }}
+    </p>
+    <a
+      class="px-4 py-2 bg-sky-300 rounded-md inline-block text-my-white self-center md:text-lg md:self-start max-w-"
+      href=""
+    >
+      {{- section.settings.button -}}
+    </a>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Image with text",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Button Text"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Image with text",
+      "name": "Image with text"
+    }
+  ]
+}
+{% endschema %}

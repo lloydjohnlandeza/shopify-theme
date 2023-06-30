@@ -2,9 +2,13 @@
   "sections": {
     "image_banner": {
       "type": "image-banner"
+    },
+    "icons_with_image": {
+      "type": "icons-with-image"
     }
   },
   "order": [
-    "image_banner"
+    "image_banner",
+    "icons_with_image"
   ]
 }

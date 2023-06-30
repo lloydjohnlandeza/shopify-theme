@@ -1,8 +1,15 @@
 <base-header>
-  <div class="sticky top-0 left-0 right-0 z-20 mx-auto flex max-w-7xl gap-2 bg-my-white px-2 py-4 md:px-4 md:py-8 border-b border-b-my-grayish-blue">
-    <button id="hamburger-button" class="relative z-40 h-11 w-8 self-center bg-white text-my-very-dark-blue md:hidden">
+  {% comment %} border-b-my-grayish-blue {% endcomment %}
+  <div class="sticky top-0 left-0 right-0 z-20 mx-auto flex max-w-7xl gap-2 bg-my-white px-2 py-4 md:px-4 md:py-8 border-b border-b-transparent">
+    <button
+      id="hamburger-button"
+      class="relative z-40 h-11 w-8 self-center bg-white text-my-very-dark-blue md:hidden"
+    >
       <span class="sr-only">Open main menu</span>
-      <div id="hamburger-lines" class="absolute left-1/2 top-1/2 block w-4 -translate-x-1/2 -translate-y-1/2 transform">
+      <div
+        id="hamburger-lines"
+        class="absolute left-1/2 top-1/2 block w-4 -translate-x-1/2 -translate-y-1/2 transform"
+      >
         <span
           aria-hidden="true"
           class="absolute block h-0.5 w-4 transform bg-current transition duration-500 ease-in-out -translate-y-1.5"
@@ -18,7 +25,11 @@
       </div>
     </button>
 
-    <a href="/" class="font-kumbh-sans text-3xl font-bold text-my-very-dark-blue">sneakers</a>
+    <a
+      href="/"
+      class="font-kumbh-sans text-3xl font-bold text-my-very-dark-blue"
+      >sneakers</a
+    >
     <ul class="md:flex hidden gap-8 items-center ml-10">
       {% for link in linklists['main-menu'].links %}
         <li class="text-my-dark-grayish-blue font-medium hover:text-my-very-dark-blue transition duration-500 ease-in-out">
@@ -36,7 +47,10 @@
 
 <script src="{{ 'sidebar.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'header-cart.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'header-cart-dropdown.js' | asset_url }}" defer="defer"></script>
+<script
+  src="{{ 'header-cart-dropdown.js' | asset_url }}"
+  defer="defer"
+></script>
 <script src="{{ 'product-showcase.js' | asset_url }}" defer="defer"></script>
 
 <script type="text/javascript" defer="defer">
@@ -49,7 +63,9 @@
       this.baseSidebar = document.querySelector('base-sidebar');
     }
     toggle() {
-      const elements = Array.from(this.querySelectorAll('#hamburger-lines span'));
+      const elements = Array.from(
+        this.querySelectorAll('#hamburger-lines span')
+      );
       const [element1, element2, element3] = elements;
 
       this.isOpen = !this.isOpen;

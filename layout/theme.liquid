@@ -1,6 +1,23 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% render 'meta-tags' %}
     {{ 'application.css' | asset_url | stylesheet_tag }}
     <style>
       html {
@@ -8,13 +25,13 @@
       }
       @font-face {
         font-family: 'kumbh-sans';
-        src: url("{{'KumbhSans-Regular.ttf' | asset_url}}");
+        src: url("{{ 'KumbhSans-Regular.ttf' | asset_url }}");
         font-weight: 300;
         font-style: normal;
       }
       @font-face {
         font-family: 'kumbh-sans';
-        src: url("{{'KumbhSans-Bold.ttf' | asset_url}}");
+        src: url("{{ 'KumbhSans-Bold.ttf' | asset_url }}");
         font-weight: 600;
         font-style: normal;
       }

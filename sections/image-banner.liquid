@@ -1,6 +1,6 @@
-<div class="max-w-7xl mx-auto px-2 py-4 md:px-4">
-  <div class="flex flex-col-reverse md:grid-cols-2 md:grid md:gap-4">
-    <div class="text-center md:text-left md:my-auto">
+<div class="max-w-7xl mx-auto px-2 pt-4 md:px-4">
+  <div class="flex flex-col-reverse mb-10 md:mb-0 md:grid-cols-2 md:grid md:gap-4">
+    <div class="text-center md:text-left md:my-auto relative">
       <h1 class="font-bold text-3xl my-4 md:text-6xl md:leading-tight lg:text-7xl lg:leading-tight lg:max-w-lg">
         {{ section.settings.title }}
       </h1>
@@ -9,9 +9,33 @@
         <button class="px-4 py-2 rounded-md text-my-white bg-my-orange mt-4 md:text-lg md:py-3 md:px-6 md:mt-8">
           {{ section.settings.button_text }}
         </button>
+        <svg
+          class="relative hidden md:block left-40"
+          viewBox="0 0 306.42426 322.66522"
+          id="svg20518"
+          sodipodi:docname="curve2.svg"
+          xml:space="preserve"
+          width="150px"
+          height="166px"
+        >
+          <path
+          d="m 3,43.465245 c 12.10762,14.64873 41.40508,65.321365 72.64574,87.892365 31.24066,22.571 79.07325,47.53363 114.79821,47.53363 35.72497,0 81.46489,-26.15844 99.55158,-47.53363 18.08669,-21.37518 16.14346,-59.790715 8.96857,-80.717475 -7.17489,-20.926757 -31.53959,-38.863982 -52.01792,-44.8430564 -20.47832,-5.97907403 -53.5127,-2.092673 -70.85202,8.9686134 -17.33931,11.061285 -28.84904,35.127053 -33.18387,57.399103 -4.33482,22.27205 1e-5,50.224205 7.1749,76.233175 7.17489,26.00897 18.83409,55.60539 35.87445,79.82064 17.04036,24.21524 55.30642,54.55904 66.36771,65.47085"
+          fill="none"
+          stroke-width="6"
+          stroke="#b6bcc8"
+          stroke-linecap="round"
+          stroke-dasharray="20, 33"
+          id="path20509" /><defs
+          id="defs20516" /><path
+          d="m 275.12828,322.02798 c 4.83062,-3.22907 4.94555,-29.20689 0.13792,-31.1734 -2.73931,-1.12049 -11.75922,3.63912 -19.01746,8.90291 -5.48033,3.97442 -9.95635,8.23628 -9.96623,10.47149 -0.0144,3.2447 9.35558,8.2979 17.57075,10.84873 4.93931,1.53367 9.4612,2.16275 11.27502,0.95027 4.83062,-3.22907 4.94555,-29.2069 0.13792,-31.1734"
+          fill="#b6bcc8"
+          id="path23668"
+          style="stroke-width:0.522113"
+          sodipodi:nodetypes="csssssc" />
+        </svg>
       {%- endif -%}
     </div>
-    <div class="relative flex items-center justify-center aspect-square sm:max-w-md sm:m-auto md:max-w-full">
+    <div class="relative flex items-center justify-center aspect-square w-full sm:max-w-md sm:m-auto md:max-w-full">
       {%- if section.settings.image != blank -%}
         <div class="absolute aspect-square w-full bg-orange-50 rounded-full"></div>
         <div class="absolute aspect-square w-[85%] bg-orange-100 rounded-full"></div>
@@ -26,14 +50,33 @@
             </div>
           {%- endif -%}
         </div>
-
         {{
           section.settings.image
           | image_url: width: 1000
-          | image_tag: loading: 'lazy', width: 1000, height: 1000, class: 'relative object-contain w-4/5 md:w-full'
+          | image_tag: loading: 'eager', width: 1000, height: 1000, class: 'relative object-contain w-4/5 md:w-full'
         }}
       {%- endif -%}
     </div>
+  </div>
+  <div class="md:grid md:grid-cols-[1.5fr_1fr] md:gap-5">
+    <div class="grid gap-3 justify-center grid-cols-1 sm:grid-cols-3 md:gap-10 mb-6">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.feature_product != blank -%}
+          {% render 'product-card', _productObject: block.settings.feature_product %}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.image_2 != blank -%}
+      {{
+        section.settings.image_2
+        | image_url: width: 500
+        | image_tag:
+          loading: 'lazy',
+          width: 500,
+          height: 500,
+          class: 'w-full md:max-w-[300px] lg:max-w-[400px] ml-auto hidden md:block mt-auto'
+      }}
+    {%- endif -%}
   </div>
 </div>
 
@@ -72,6 +115,25 @@
       "type": "html",
       "id": "discount_description",
       "label": "Discount Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image"
+    }
+  ],
+  "blocks": [
+    {
+      "limit": 3,
+      "type": "heading",
+      "name": "feature_product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "feature_product",
+          "label": "Feature Product"
+        }
+      ]
     }
   ],
   "presets": [

@@ -1,0 +1,91 @@
+<div class="bg-sky-50 mb-8">
+  <ul class="max-w-sm mx-auto gap-8 px-2 py-8 flex flex-col flex-wrap justify-center sm:max-w-7xl sm:flex-row md:px-4 lg:grid lg:grid-cols-3 lg:gap-6 lg:justify-between ">
+    <li class="flex flex-col text-center items-center gap-4 sm:text-left sm:flex-row">
+      <div class="bg-my-orange p-4 rounded-md">
+        <base-icons class="text-my-white [&>svg]:w-12" icon_name="secure"></base-icons>
+      </div>
+      <div class="flex flex-col">
+        <h4 class="font-bold text-2xl md:text-4xl">Secure Payment</h4>
+        <p>Secure on order</p>
+      </div>
+    </li>
+    <li class="flex flex-col text-center items-center gap-4 sm:text-left sm:flex-row">
+      <div class="bg-my-orange p-4 rounded-md">
+        <base-icons class="text-my-white [&>svg]:w-12" icon_name="support"></base-icons>
+      </div>
+      <div class="flex flex-col">
+        <h4 class="font-bold text-2xl md:text-4xl">24/7 Support</h4>
+        <p>Contact us 24 hrs a day</p>
+      </div>
+    </li>
+    <li class="flex flex-col text-center items-center gap-4 sm:text-left sm:flex-row">
+      <div class="bg-my-orange p-4 rounded-md">
+        <base-icons class="text-my-white [&>svg]:w-12" icon_name="truck"></base-icons>
+      </div>
+      <div class="flex flex-col">
+        <h4 class="font-bold text-2xl md:text-4xl">Fast Delivery</h4>
+        <p>Fast delivery on order</p>
+      </div>
+    </li>
+  </ul>
+</div>
+{% schema %}
+{
+  "name": "Icons with Image",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Title 1"
+    },
+    {
+      "type": "text",
+      "id": "description_1",
+      "label": "Description 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Title 2"
+    },
+    {
+      "type": "text",
+      "id": "description_2",
+      "label": "Description 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Title 3"
+    },
+    {
+      "type": "text",
+      "id": "description_3",
+      "label": "Description 3"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Icons with Image",
+      "name": "Icons with Image"
+    }
+  ]
+}
+{% endschema %}
