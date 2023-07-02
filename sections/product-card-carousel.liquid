@@ -1,0 +1,68 @@
+<div class="max-w-7xl mx-auto px-2 py-4 md:py-8 lg:py-16">
+  <div>
+    <h2 class="text-center text-3xl font-bold md:text-4xl lg:text-5xl xl:text-6xl">
+      {{ section.settings.title }}
+    </h2>
+    <p class="mb-40 md:text-xl text-center">
+      {{ section.settings.description }}
+    </p>
+    <section class="splide" aria-label="Basic Structure Example">
+      <div class="h-[384px]">
+        <div class="splide__arrows absolute inset-0">
+          <button class="splide__arrow splide__arrow--prev absolute inset-y-0 z-10">
+            <base-icons icon_name="previous"></base-icons>
+          </button>
+          <button class="splide__arrow splide__arrow--next absolute inset-y-0 right-0 z-10">
+            <base-icons icon_name="next"></base-icons>
+          </button>
+        </div>
+        <div class="splide__track">
+          <ul class="splide__list">
+            {% for product in collections[section.settings.collection].products %}
+              <li class="splide__slide">
+                {% render 'product-card', _productObject: product %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var splide = new Splide('.splide', {
+      perPage: 3,
+    });
+    splide.mount();
+  });
+</script>
+{% schema %}
+{
+  "name": "Product Card Carousel",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collections"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Product Card Carousel",
+      "name": "Product Card Carousel"
+    }
+  ]
+}
+{% endschema %}

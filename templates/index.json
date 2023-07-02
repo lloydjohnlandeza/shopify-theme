@@ -5,10 +5,18 @@
     },
     "icons_with_image": {
       "type": "icons-with-image"
+    },
+    "image_with_text": {
+      "type": "image-with-text"
+    },
+    "product_card_carousel": {
+      "type": "product-card-carousel"
     }
   },
   "order": [
     "image_banner",
-    "icons_with_image"
+    "icons_with_image",
+    "image_with_text",
+    "product_card_carousel"
   ]
 }

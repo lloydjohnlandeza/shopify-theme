@@ -3,5 +3,5 @@
     "editor.defaultFormatter": "Shopify.theme-check-vscode",
     "editor.formatOnSave": true
   },
-  "liquid.format.enable": true
+  "liquid.format.enable": false
 }

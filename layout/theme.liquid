@@ -19,6 +19,8 @@
 
     {% render 'meta-tags' %}
     {{ 'application.css' | asset_url | stylesheet_tag }}
+    {{ 'splide-core.min.css' | asset_url | stylesheet_tag }}
+
     <style>
       html {
         font-family: 'kumbh-sans';
@@ -41,6 +43,8 @@
   <body>
     {% section 'header' %}
     {{ content_for_layout }}
+    <script src="{{ 'slider.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'splide.js' | asset_url }}" defer="defer"></script>
 
     <script src="{{ 'icons.js' | asset_url }}" defer="defer"></script>
   </body>

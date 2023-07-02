@@ -1,8 +1,12 @@
-<a href="{{ _productObject.url }}" class="max-w-[250px] block mx-auto">
+<a href="{{ _productObject.url }}" class="max-w-[250px] lg:max-w-xs block mx-auto">
   {{
     _productObject.featured_image
     | image_url: width: 500
-    | image_tag: loading: 'lazy', width: 500, height: 500, class: 'w-full rounded-md bg-my-pale-orange object-cover'
+    | image_tag:
+      loading: 'lazy',
+      width: 500,
+      height: 500,
+      class: 'w-full rounded-md bg-my-pale-orange aspect-square object-cover'
   }}
   <div class="text-center">
     <h6 class="text-lg font-bold mt-3 line-clamp-2">
