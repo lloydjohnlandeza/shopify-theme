@@ -3,3 +3,17 @@
 @tailwind components;
 /* purgecss end ignore */
 @tailwind utilities;
+
+@layer components {
+
+  .testimony-active {
+    @apply flex flex-col w-full max-w-xl px-12 pt-10 pb-20 absolute bg-my-orange rounded-md z-20 [&>p]:text-my-white;
+  }
+  .testimony-left {
+    @apply -translate-x-[102%] translate-y-10 flex flex-col w-full max-w-xl px-12 pt-10 pb-20 absolute bg-my-orange rounded-md [&>p]:text-my-white opacity-40;
+  }
+  
+  .testimony-right {
+    @apply translate-x-[102%] translate-y-10 flex flex-col w-full max-w-xl px-12 pt-10 pb-20 absolute bg-my-orange rounded-md z-10 [&>p]:text-my-white opacity-40;
+  }
+}

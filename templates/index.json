@@ -11,12 +11,16 @@
     },
     "product_card_carousel": {
       "type": "product-card-carousel"
+    },
+    "testimonial": {
+      "type": "testimonial"
     }
   },
   "order": [
     "image_banner",
     "icons_with_image",
     "image_with_text",
-    "product_card_carousel"
+    "product_card_carousel",
+    "testimonial"
   ]
 }

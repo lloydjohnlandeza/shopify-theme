@@ -63,9 +63,7 @@
       this.baseSidebar = document.querySelector('base-sidebar');
     }
     toggle() {
-      const elements = Array.from(
-        this.querySelectorAll('#hamburger-lines span')
-      );
+      const elements = Array.from(this.querySelectorAll('#hamburger-lines span'));
       const [element1, element2, element3] = elements;
 
       this.isOpen = !this.isOpen;

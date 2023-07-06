@@ -1,0 +1,97 @@
+<div
+  class="max-w-7xl mx-auto px-2 py-4 md:py-8 lg:py-16"
+>
+  <h2 class="text-center text-3xl font-bold md:text-4xl lg:text-5xl xl:text-6xl">What our customer says</h2>
+  <p class="mb-10 md:text-xl text-center">Lorem Ipsum Dolar Sit</p>
+</div>
+<section class="w-full h-[600px] overflow-hidden">
+  <ul class="flex justify-center relative">
+    <li class="testimony testimony-left transition-all duration-1000 ease-in-out">
+      <p class="text-center">
+        The Sneakers Shop exceeded all my expectations. Their impressive collection of top brands and limited-edition
+        styles, combined with exceptional customer service, made it my ultimate destination for stylish and high-quality
+        sneakers
+      </p>
+      <img class="h-24 rounded-full aspect-square bg-my-grayish-blue absolute self-center -bottom-14">
+    </li>
+    <li class="testimony testimony-active transition-all duration-1000 ease-in-out">
+      <p class="text-center">
+        The Sneakers Shop exceeded all my expectations. Their impressive collection of top brands and limited-edition
+        styles, combined with exceptional customer service, made it my ultimate destination for stylish and high-quality
+        sneakers
+      </p>
+      <img class="h-24 rounded-full aspect-square bg-my-grayish-blue absolute self-center -bottom-14">
+    </li>
+    <li class="testimony testimony-right transition-all duration-1000 ease-in-out">
+      <p class="text-center">
+        The Sneakers Shop exceeded all my expectations. Their impressive collection of top brands and limited-edition
+        styles, combined with exceptional customer service, made it my ultimate destination for stylish and high-quality
+        sneakers
+      </p>
+      <img class="h-24 rounded-full aspect-square bg-my-grayish-blue absolute self-center -bottom-14">
+    </li>
+  </ul>
+</section>
+{% comment %}
+  li.forEach((item) => {
+    if (item.classList.contains('testimony-left')) {
+      item.classList.toggle('testimony-left')
+      item.classList.toggle('testimony-active')
+    } else if (item.classList.contains('testimony-right')) {
+      item.classList.toggle('testimony-left')
+      item.classList.toggle('testimony-active')
+    }
+  });
+{% endcomment %}
+<script>
+  const li = document.querySelectorAll('.testimony');
+  li &&
+    li.forEach((i) => {
+      i.addEventListener('click', async (event) => {
+        event.preventDefault();
+        if (event.target.classList.contains('testimony-right')) {
+          event.target.classList.add('testimony-active');
+          event.target.classList.remove('testimony-right');
+        }
+
+        /*
+        console.log(classList('testimony'));
+        li[0].classList.toggle('testimony-left');
+        li[0].classList.toggle('testimony-active');
+        li[1].classList.toggle('testimony-right');
+        li[1].classList.toggle('testimony-active');
+
+        li[2].classList.toggle('testimony-left');
+        li[2].classList.toggle('testimony-right');*/
+      });
+    });
+</script>
+{% schema %}
+{
+  "name": "Testimonial",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collections"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Testimonial",
+      "name": "Testimonial"
+    }
+  ]
+}
+{% endschema %}

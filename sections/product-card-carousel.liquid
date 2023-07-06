@@ -3,17 +3,17 @@
     <h2 class="text-center text-3xl font-bold md:text-4xl lg:text-5xl xl:text-6xl">
       {{ section.settings.title }}
     </h2>
-    <p class="mb-40 md:text-xl text-center">
+    <p class="mb-10 md:text-xl text-center">
       {{ section.settings.description }}
     </p>
-    <section class="splide" aria-label="Basic Structure Example">
-      <div class="h-[384px]">
-        <div class="splide__arrows absolute inset-0">
-          <button class="splide__arrow splide__arrow--prev absolute inset-y-0 z-10">
-            <base-icons icon_name="previous"></base-icons>
+    <section id="product-card-carousel" class="splide" aria-label="Product Carousel">
+      <div class="h-[384px] md:relative md:max-w-3xl lg:max-w-full md:mx-auto">
+        <div class="splide__arrows absolute flex items-center w-full mx-auto inset-x-0 max-w-md sm:max-w-full h-[250px] xl:h-[320px]">
+          <button class="splide__arrow splide__arrow--prev absolute -left-2 z-10 px-4 py-3 rounded-md bg-my-white drop-shadow-xl  min-[375px]:-left-1 min-[375px]:bg-my-orange md:left-0 min-[1340px]:-left-5 2xl:-left-8">
+            <base-icons class="text-black min-[375px]:text-my-white" icon_name="previous"></base-icons>
           </button>
-          <button class="splide__arrow splide__arrow--next absolute inset-y-0 right-0 z-10">
-            <base-icons icon_name="next"></base-icons>
+          <button class="splide__arrow splide__arrow--next absolute -right-2 z-10 px-4 py-3 rounded-md bg-my-white drop-shadow-xl min-[375px]:-right-1 min-[375px]:bg-my-orange md:right-0 min-[1340px]:-right-5 2xl:-right-8">
+            <base-icons class="text-black min-[375px]:text-my-white" icon_name="next"></base-icons>
           </button>
         </div>
         <div class="splide__track">
@@ -31,8 +31,16 @@
 </div>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    var splide = new Splide('.splide', {
+    var splide = new Splide('#product-card-carousel', {
       perPage: 3,
+      breakpoints: {
+        640: {
+          perPage: 1,
+        },
+        1024: {
+          perPage: 2,
+        },
+      },
     });
     splide.mount();
   });
