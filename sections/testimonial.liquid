@@ -2,69 +2,134 @@
   class="max-w-7xl mx-auto px-2 py-4 md:py-8 lg:py-16"
 >
   <h2 class="text-center text-3xl font-bold md:text-4xl lg:text-5xl xl:text-6xl">What our customer says</h2>
-  <p class="mb-10 md:text-xl text-center">Lorem Ipsum Dolar Sit</p>
+  <p class="md:text-xl text-center">Lorem Ipsum Dolar Sit</p>
 </div>
-<section class="w-full h-[600px] overflow-hidden">
+<testimonial-carousel class="block w-full h-[600px] relative overflow-hidden px-2 md:px-0">
+  <div class="flex justify-end mb-2 gap-2 sm:absolute sm:h-[216px] sm:justify-between sm:items-center sm:w-full sm:max-w-3xl sm:mx-auto sm:inset-x-0">
+    <button id="prev" class="px-4 py-3 rounded-md drop-shadow-xl z-30">
+      <base-icons class="text-black" icon_name="previous"></base-icons>
+    </button>
+    <button id="next" class="px-4 py-3 rounded-md drop-shadow-xl z-30">
+      <base-icons class="text-black" icon_name="next"></base-icons>
+    </button>
+  </div>
   <ul class="flex justify-center relative">
     <li class="testimony testimony-left transition-all duration-1000 ease-in-out">
-      <p class="text-center">
+      <p class="text-center transition-all duration-1000">
         The Sneakers Shop exceeded all my expectations. Their impressive collection of top brands and limited-edition
         styles, combined with exceptional customer service, made it my ultimate destination for stylish and high-quality
-        sneakers
+        sneakersx
       </p>
-      <img class="h-24 rounded-full aspect-square bg-my-grayish-blue absolute self-center -bottom-14">
+      <div class="absolute self-center mx-auto -bottom-32 text-center">
+        <img class="h-24 rounded-full aspect-square mx-auto bg-my-grayish-blue">
+        <h6 class="my-4 font-bold">Mang Oleh</h6>
+        <p>Product Designer</p>
+      </div>
     </li>
     <li class="testimony testimony-active transition-all duration-1000 ease-in-out">
-      <p class="text-center">
+      <p class="text-center transition-all duration-1000">
         The Sneakers Shop exceeded all my expectations. Their impressive collection of top brands and limited-edition
         styles, combined with exceptional customer service, made it my ultimate destination for stylish and high-quality
         sneakers
       </p>
-      <img class="h-24 rounded-full aspect-square bg-my-grayish-blue absolute self-center -bottom-14">
+      <div class="absolute self-center mx-auto -bottom-32 text-center">
+        <img class="h-24 rounded-full aspect-square mx-auto bg-my-grayish-blue">
+        <h6 class="my-4 font-bold">Mang Oleh</h6>
+        <p>Product Designer</p>
+      </div>
     </li>
     <li class="testimony testimony-right transition-all duration-1000 ease-in-out">
-      <p class="text-center">
+      <p class="text-center transition-all duration-1000">
         The Sneakers Shop exceeded all my expectations. Their impressive collection of top brands and limited-edition
         styles, combined with exceptional customer service, made it my ultimate destination for stylish and high-quality
         sneakers
       </p>
-      <img class="h-24 rounded-full aspect-square bg-my-grayish-blue absolute self-center -bottom-14">
+      <div class="absolute self-center mx-auto -bottom-32 text-center">
+        <img class="h-24 rounded-full aspect-square mx-auto bg-my-grayish-blue">
+        <h6 class="my-4 font-bold">Mang Oleh</h6>
+        <p>Product Designer</p>
+      </div>
     </li>
   </ul>
-</section>
-{% comment %}
-  li.forEach((item) => {
-    if (item.classList.contains('testimony-left')) {
-      item.classList.toggle('testimony-left')
-      item.classList.toggle('testimony-active')
-    } else if (item.classList.contains('testimony-right')) {
-      item.classList.toggle('testimony-left')
-      item.classList.toggle('testimony-active')
-    }
-  });
-{% endcomment %}
-<script>
-  const li = document.querySelectorAll('.testimony');
-  li &&
-    li.forEach((i) => {
-      i.addEventListener('click', async (event) => {
-        event.preventDefault();
-        if (event.target.classList.contains('testimony-right')) {
-          event.target.classList.add('testimony-active');
-          event.target.classList.remove('testimony-right');
+</testimonial-carousel>
+<script defer="defer">
+  if (!customElements.get('testimonial-carousel')) {
+    customElements.define(
+      'testimonial-carousel',
+      class TestimonialCarousel extends HTMLElement {
+        constructor() {
+          super();
+          this.testimonies = this.querySelectorAll('.testimony');
+          this.handleCardClick = this.handleCardClick.bind(this);
+          this.handleNavigation = this.handleNavigation.bind(this);
+          this.handleNext = this.handleNext.bind(this);
+          this.handlePrev = this.handlePrev.bind(this);
+          this.previousBtn = this.querySelector('#prev');
+          this.nextBtn = this.querySelector('#next');
+          this.attachedEvents();
         }
 
-        /*
-        console.log(classList('testimony'));
-        li[0].classList.toggle('testimony-left');
-        li[0].classList.toggle('testimony-active');
-        li[1].classList.toggle('testimony-right');
-        li[1].classList.toggle('testimony-active');
+        disconnectedCallback() {
+          this.removeEvents();
+        }
+        attachedEvents() {
+          this.testimonies.forEach((testimony) => {
+            testimony.addEventListener('click', this.handleCardClick);
+          });
+          this.nextBtn.addEventListener('click', this.handleNext);
+          this.previousBtn.addEventListener('click', this.handlePrev);
+        }
 
-        li[2].classList.toggle('testimony-left');
-        li[2].classList.toggle('testimony-right');*/
-      });
-    });
+        removeEvents() {
+          this.testimonies.forEach((testimony) => {
+            testimony.removeEventListener('click', this.handleCardClick);
+          });
+          this.testimonies = [];
+          this.nextBtn.removeEventListener('click', this.handleNext);
+          this.previousBtn.removeEventListener('click', this.handlePrev);
+        }
+
+        handleNext() {
+          this.handleNavigation(this.querySelector('.testimony.testimony-right'));
+        }
+
+        handlePrev() {
+          this.handleNavigation(this.querySelector('.testimony.testimony-left'));
+        }
+
+        handleCardClick(event) {
+          event.preventDefault();
+          this.handleNavigation(event.target);
+        }
+
+        handleNavigation(element) {
+          if (!element) return;
+          const currentActive = this.querySelector('.testimony.testimony-active');
+          const currentLeft = this.querySelector('.testimony.testimony-left');
+          const currentRight = this.querySelector('.testimony.testimony-right');
+          if (element.classList.contains('testimony-right')) {
+            element.classList.add('testimony-active');
+            element.classList.remove('testimony-right');
+
+            currentActive.classList.remove('testimony-active');
+            currentActive.classList.add('testimony-left');
+
+            currentLeft.classList.remove('testimony-left');
+            currentLeft.classList.add('testimony-right');
+          } else if (element.classList.contains('testimony-left')) {
+            element.classList.add('testimony-active');
+            element.classList.remove('testimony-left');
+
+            currentActive.classList.remove('testimony-active');
+            currentActive.classList.add('testimony-right');
+
+            currentRight.classList.remove('testimony-right');
+            currentRight.classList.add('testimony-left');
+          }
+        }
+      }
+    );
+  }
 </script>
 {% schema %}
 {

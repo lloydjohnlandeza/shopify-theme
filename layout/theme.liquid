@@ -43,6 +43,8 @@
   <body>
     {% section 'header' %}
     {{ content_for_layout }}
+    {% section 'footer' %}
+
     <script src="{{ 'slider.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'splide.js' | asset_url }}" defer="defer"></script>
 

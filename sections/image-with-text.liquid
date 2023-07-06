@@ -1,30 +1,43 @@
-<div class="max-w-7xl mx-auto px-2 py-4 md:py-8 lg:py-16 gap-4 md:gap-9 grid grid-cols-1 sm:px-4 sm:grid-cols-[auto_1fr]">
-  {%- if section.settings.image != blank -%}
-    {{
-      section.settings.image
-      | image_url: width: 500
-      | image_tag:
-        loading: 'lazy',
-        width: 500,
-        height: 500,
-        class: 'object-cover rounded-md mb-4 mx-auto w-full max-w-md sm:mb-0 sm:max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg lg:ml-0'
-    }}
-  {% endif %}
-  <div class="text-center max-w-lg mx-auto flex flex-col gap-4 sm:gap-2 lg:gap-4 sm:max-w-none sm:left-0 sm:my-auto sm:text-left sm:ml-0">
-    <h2 class="text-3xl font-bold md:text-4xl md:max-w-xs lg:max-w-md lg:text-5xl xl:max-w-[590px] xl:text-6xl xl:tracking-wider">
-      {{ section.settings.title }}
-    </h2>
-    <p class="md:text-lg lg:text-xl xl:max-w-xl">
-      {{ section.settings.description }}
-    </p>
-    <a
-      class="px-4 py-2 bg-sky-300 rounded-md inline-block text-my-white self-center md:text-lg sm:self-start "
-      href=""
-    >
-      {{- section.settings.button -}}
-    </a>
+{%- if section.settings.image != blank
+  and section.settings.title
+  and section.settings.description
+  and section.settings.button
+-%}
+  <div class="max-w-7xl mx-auto px-2 py-4 md:py-8 lg:py-16 gap-4 md:gap-9 grid grid-cols-1 sm:px-4 sm:grid-cols-[auto_1fr]">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 500
+        | image_tag:
+          loading: 'lazy',
+          width: 500,
+          height: 500,
+          class: 'object-cover rounded-md mb-4 mx-auto w-full max-w-md sm:mb-0 sm:max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg lg:ml-0'
+      }}
+    {% endif %}
+    <div class="text-center max-w-lg mx-auto flex flex-col gap-4 sm:gap-2 lg:gap-4 sm:max-w-none sm:left-0 sm:my-auto sm:text-left sm:ml-0">
+      {%- if section.settings.title != blank -%}
+        <h2 class="text-3xl font-bold md:text-4xl md:max-w-xs lg:max-w-md lg:text-5xl xl:max-w-[590px] xl:text-6xl xl:tracking-wider">
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+      {%- if section.settings.description != blank -%}
+        <p class="md:text-lg lg:text-xl xl:max-w-xl">
+          {{ section.settings.description }}
+        </p>
+      {% endif %}
+      {%- if section.settings.button != blank -%}
+        <a
+          class="px-4 py-2 bg-sky-300 rounded-md inline-block text-my-white self-center md:text-lg sm:self-start "
+          href=""
+        >
+          {{- section.settings.button -}}
+        </a>
+      {% endif %}
+    </div>
   </div>
-</div>
+{% endif %}
+
 {% schema %}
 {
   "name": "Image with text",
