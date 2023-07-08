@@ -1,7 +1,7 @@
 <a href="{{ _productObject.url }}" class="max-w-[250px] xl:max-w-xs block mx-auto">
   <div class="relative image-container">
     <svg
-      class="absolute inset-y-0 -left-4 h-[95%] w-auto my-auto scale-[-1]"
+      class="{% if show_svg == false %} hidden {% endif %} absolute inset-y-0 -left-4 h-[95%] w-auto my-auto scale-[-1]"
       xmlns="http://www.w3.org/2000/svg"
       width="11.872"
       height="153.492"
@@ -10,7 +10,7 @@
       <path class="stroke-my-orange" style="fill:none;stroke-width:.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="M93.014 59.77s1.589-1.479 2.915 0v38.887s-1.165 1.75-2.915 0" transform="translate(-92.92 -58.951)"/>
     </svg>
     <svg
-      class="absolute inset-y-0 -right-4 h-[95%] w-auto my-auto"
+      class="{% if show_svg == false %} hidden {% endif %} absolute inset-y-0 -right-4 h-[95%] w-auto my-auto"
       xmlns="http://www.w3.org/2000/svg"
       width="11.872"
       height="153.492"

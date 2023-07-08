@@ -1,0 +1,59 @@
+<div
+  class="flex flex-col mx-auto max-w-7xl gap-2 px-2 pb-10 md:pb-14 md:pt-20 md:px-4 md:pb-16 md:pt-28"
+>
+  <h2 class="text-center text-3xl font-bold md:text-4xl lg:text-5xl xl:text-6xl">{{ section.settings.title }}</h2>
+  <p class="md:text-xl text-center max-w-2xl mx-auto">{{ section.settings.description }}</p>
+  <div class="flex flex-wrap items-center justify-center gap-8 my-8 lg:mt-20 lg:mb-28">
+    {%- for block in section.blocks -%}
+      {%- if block.settings.image != blank -%}
+        <img
+          class="w-full max-w-[100px] md:max-w-[200px] mx-auto grayscale"
+          src="{{ block.settings.image | image_url: height: 500 }}"
+          loading="lazy"
+          width="500"
+          height="500"
+        >
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Assisting us",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Assisting us"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Explore the invaluable contributions of our trusted partners who play a pivotal role in assisting us and shaping our success story."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Assisting us",
+      "name": "Assisting us"
+    }
+  ]
+}
+{% endschema %}

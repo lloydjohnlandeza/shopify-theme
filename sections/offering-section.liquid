@@ -1,0 +1,56 @@
+<div class="bg-my-orange">
+  <div
+    class="flex flex-col mx-auto max-w-7xl gap-2 px-2 py-4 sm:pb-14 sm:pt-20 md:px-4 md:pb-16 md:pt-28 relative"
+  >
+    <h2 class="mx-auto mb-6 text-white text-2xl font-bold sm:ml-0 sm:text-3xl md:ml-auto lg:text-4xl xl:text-5xl">
+      {{ section.settings.title }}
+    </h2>
+    <fieldset class="mx-auto grid grid-cols-[1fr_auto] w-full justify-center max-w-[270px] sm:max-w-xs sm:ml-0 md:ml-auto lg:max-w-[400px] xl:max-w-lg gap-2">
+      <input
+        class="w-full rounded-md border border-my-light-grayish-blue bg-my-light-grayish-blue px-4 py-2"
+        type="text"
+        placeholder="Input your email address in here"
+      >
+      <button class="h-full bg-my-very-dark-blue text-my-white px-4 rounded-md">
+        <base-icons class="text-my-white w-5 block" icon_name="send"></base-icons>
+      </button>
+    </fieldset>
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 500
+        | image_tag:
+          loading: 'lazy',
+          width: 500,
+          height: 500,
+          class: 'w-full hidden sm:block sm:absolute sm:right-0 sm:bottom-0 sm:max-w-[200px] lg:max-w-[250px]'
+      }}
+    {%- endif -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Offering section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Let us send you offering"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Offering section",
+      "name": "Offering section"
+    }
+  ]
+}
+{% endschema %}

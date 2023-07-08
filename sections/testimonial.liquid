@@ -1,10 +1,10 @@
 <div
   class="max-w-7xl mx-auto px-2 py-4 md:py-8 lg:py-16"
 >
-  <h2 class="text-center text-3xl font-bold md:text-4xl lg:text-5xl xl:text-6xl">What our customer says</h2>
-  <p class="md:text-xl text-center">Lorem Ipsum Dolar Sit</p>
+  <h2 class="text-center text-3xl font-bold md:text-4xl lg:text-5xl xl:text-6xl">{{ section.settings.title }}</h2>
+  <p class="md:text-xl text-center">{{ section.settings.description }}</p>
 </div>
-<testimonial-carousel class="block w-full h-[600px] relative overflow-hidden px-2 md:px-0">
+<testimonial-carousel class="block w-full h-[500px] relative overflow-hidden px-2 md:px-0">
   <div class="flex justify-end mb-2 gap-2 sm:absolute sm:h-[216px] sm:justify-between sm:items-center sm:w-full sm:max-w-3xl sm:mx-auto sm:inset-x-0">
     <button id="prev" class="px-4 py-3 rounded-md drop-shadow-xl z-30">
       <base-icons class="text-black" icon_name="previous"></base-icons>
@@ -14,42 +14,36 @@
     </button>
   </div>
   <ul class="flex justify-center relative">
-    <li class="testimony testimony-left transition-all duration-1000 ease-in-out">
-      <p class="text-center transition-all duration-1000">
-        The Sneakers Shop exceeded all my expectations. Their impressive collection of top brands and limited-edition
-        styles, combined with exceptional customer service, made it my ultimate destination for stylish and high-quality
-        sneakersx
-      </p>
-      <div class="absolute self-center mx-auto -bottom-32 text-center">
-        <img class="h-24 rounded-full aspect-square mx-auto bg-my-grayish-blue">
-        <h6 class="my-4 font-bold">Mang Oleh</h6>
-        <p>Product Designer</p>
-      </div>
-    </li>
-    <li class="testimony testimony-active transition-all duration-1000 ease-in-out">
-      <p class="text-center transition-all duration-1000">
-        The Sneakers Shop exceeded all my expectations. Their impressive collection of top brands and limited-edition
-        styles, combined with exceptional customer service, made it my ultimate destination for stylish and high-quality
-        sneakers
-      </p>
-      <div class="absolute self-center mx-auto -bottom-32 text-center">
-        <img class="h-24 rounded-full aspect-square mx-auto bg-my-grayish-blue">
-        <h6 class="my-4 font-bold">Mang Oleh</h6>
-        <p>Product Designer</p>
-      </div>
-    </li>
-    <li class="testimony testimony-right transition-all duration-1000 ease-in-out">
-      <p class="text-center transition-all duration-1000">
-        The Sneakers Shop exceeded all my expectations. Their impressive collection of top brands and limited-edition
-        styles, combined with exceptional customer service, made it my ultimate destination for stylish and high-quality
-        sneakers
-      </p>
-      <div class="absolute self-center mx-auto -bottom-32 text-center">
-        <img class="h-24 rounded-full aspect-square mx-auto bg-my-grayish-blue">
-        <h6 class="my-4 font-bold">Mang Oleh</h6>
-        <p>Product Designer</p>
-      </div>
-    </li>
+    {%- for block in section.blocks -%}
+      <li
+        class="
+          {%- if forloop.index == 1 -%}
+            testimony-left
+          {% elsif forloop.index == 2 %}
+            testimony-active
+            {% else %}
+            testimony-right
+          {% endif %}
+          testimony transition-all duration-1000 ease-in-out
+        "
+      >
+        <p class="text-center transition-all duration-1000">
+          {{ block.settings.testimony }}
+        </p>
+        <div class="absolute self-center mx-auto -bottom-32 text-center">
+          <img
+            class="h-24 w-24 rounded-full aspect-square mx-auto bg-my-grayish-blue object-cover"
+            src="{{ block.settings.image | image_url: width: 200 }}"
+            height="200"
+            width="200"
+            alt="{{ block.settings.image.alt | escape }}"
+            loading="lazy"
+          >
+          <h6 class="my-4 font-bold">{{ block.settings.name }}</h6>
+          <p>{{ block.settings.profession }}</p>
+        </div>
+      </li>
+    {%- endfor -%}
   </ul>
 </testimonial-carousel>
 <script defer="defer">
@@ -73,9 +67,14 @@
           this.removeEvents();
         }
         attachedEvents() {
+          let height = 0;
           this.testimonies.forEach((testimony) => {
             testimony.addEventListener('click', this.handleCardClick);
+            if (height < testimony.clientHeight) {
+              height = testimony.clientHeight;
+            }
           });
+          this.style.height = `${height + 200}px`;
           this.nextBtn.addEventListener('click', this.handleNext);
           this.previousBtn.addEventListener('click', this.handlePrev);
         }
@@ -139,17 +138,42 @@
     {
       "type": "text",
       "id": "title",
-      "label": "Title"
+      "label": "Title",
+      "default": "What our customer says"
     },
     {
       "type": "text",
       "id": "description",
-      "label": "Description"
-    },
+      "label": "Description",
+      "default": "Real customer stories: Find out why our customers love us."
+    }
+  ],
+  "blocks": [
     {
-      "type": "collection",
-      "id": "collection",
-      "label": "Collections"
+      "type": "testimony",
+      "name": "testimony",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "testimony",
+          "label": "Testimony"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "profession",
+          "label": "Profession"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
     }
   ],
   "presets": [

@@ -49,12 +49,13 @@
       }
     },
     "testimonial": {
-      "type": "testimonial",
-      "settings": {
-        "title": "",
-        "description": "",
-        "collection": ""
-      }
+      "type": "testimonial"
+    },
+    "assisting_us": {
+      "type": "Assisting us"
+    },
+    "offering_section": {
+      "type": "offering-section"
     }
   },
   "order": [
@@ -62,6 +63,8 @@
     "icons_with_image",
     "image_with_text",
     "product_card_carousel",
-    "testimonial"
+    "testimonial",
+    "assisting_us",
+    "offering-section"
   ]
 }

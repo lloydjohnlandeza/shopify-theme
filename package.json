@@ -20,6 +20,7 @@
     "@shopify/prettier-plugin-liquid": "^1.1.0",
     "jsdoc": "^4.0.2",
     "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0",
     "typescript": "^5.1.3"
   }
 }
