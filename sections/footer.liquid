@@ -1,14 +1,14 @@
 <div class="border-my-grayish-blue border-t">
   <div
-    class="max-w-7xl mx-auto px-2 py-4 flex flex-col text-center md:py-8 lg:py-16"
+    class="max-w-7xl mx-auto px-2 py-4 grid grid-cols-6 md:py-8 lg:flex lg:justify-between lg:py-16"
   >
-    <div class="max-w-xs">
+    <div class="max-w-[300px] col-span-6 sm:col-span-3">
       <h6 class="font-kumbh-sans text-3xl font-bold text-my-very-dark-blue mb-3">sneakers</h6>
       <p class="text-my-dark-grayish-blue">
         Our company is a shoe company, basically our service provide product sneakers
       </p>
     </div>
-    <ul class="py-4 flex flex-col gap-2">
+    <ul class="py-4 flex flex-col gap-2 col-span-2 sm:col-span-1">
       <li class="font-bold mb-2">Product</li>
       <li class="text-my-dark-grayish-blue">
         <a href="">High Top</a>
@@ -20,7 +20,7 @@
         <a href="">Synthetic</a>
       </li>
     </ul>
-    <ul class="py-4 flex flex-col gap-2">
+    <ul class="py-4 flex flex-col gap-2 col-span-2 sm:col-span-1">
       <li class="font-bold mb-2">Product</li>
       <li class="text-my-dark-grayish-blue">
         <a href="">High Top</a>
@@ -32,7 +32,7 @@
         <a href="">Synthetic</a>
       </li>
     </ul>
-    <ul class="py-4 flex flex-col gap-2">
+    <ul class="py-4 flex flex-col gap-2 col-span-2 sm:col-span-1">
       <li class="font-bold mb-2">Site Map</li>
       <li class="text-my-dark-grayish-blue">
         <a href="">High Top</a>
@@ -44,10 +44,12 @@
         <a href="">Synthetic</a>
       </li>
     </ul>
-    <label class="font-bold" for="newletter">Join a Newsletter</label>
-    <div class="grid grid-cols-[1fr_auto] items-center mt-3">
-      <input class="bg-my-light-grayish-blue p-2 " placeholder="Input your email here" type="text">
-      <button class="h-full bg-my-orange text-my-white">Next</button>
+    <div class="col-span-6 py-4 max-w-sm">
+      <label class="font-bold" for="newletter">Join a Newsletter</label>
+      <div class="grid grid-cols-[1fr_auto] items-center mt-3 lg:h-[60px]">
+        <input class="bg-my-light-grayish-blue px-4 py-2 lg:h-full" placeholder="Input your email here" type="text">
+        <button class="h-full bg-my-orange text-my-white px-4 lg:px-5">Next</button>
+      </div>
     </div>
   </div>
 </div>

@@ -1,19 +1,60 @@
 {
   "sections": {
     "image_banner": {
-      "type": "image-banner"
+      "type": "image-banner",
+      "blocks": {
+        "77f9ae03-0734-4285-b909-505ee1db20e7": {
+          "type": "heading",
+          "settings": {
+            "feature_product": ""
+          }
+        }
+      },
+      "block_order": [
+        "77f9ae03-0734-4285-b909-505ee1db20e7"
+      ],
+      "settings": {
+        "title": "",
+        "description": "",
+        "button_text": "",
+        "discount_title": "",
+        "discount_description": ""
+      }
     },
     "icons_with_image": {
-      "type": "icons-with-image"
+      "type": "icons-with-image",
+      "settings": {
+        "title_1": "",
+        "description_1": "",
+        "title_2": "",
+        "description_2": "",
+        "title_3": "",
+        "description_3": ""
+      }
     },
     "image_with_text": {
-      "type": "image-with-text"
+      "type": "image-with-text",
+      "settings": {
+        "title": "",
+        "description": "",
+        "button": ""
+      }
     },
     "product_card_carousel": {
-      "type": "product-card-carousel"
+      "type": "product-card-carousel",
+      "settings": {
+        "title": "Test",
+        "description": "test",
+        "collection": "frontpage"
+      }
     },
     "testimonial": {
-      "type": "testimonial"
+      "type": "testimonial",
+      "settings": {
+        "title": "",
+        "description": "",
+        "collection": ""
+      }
     }
   },
   "order": [
