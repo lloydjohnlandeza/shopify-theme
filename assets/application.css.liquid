@@ -622,6 +622,7 @@ html,
   --tw-translate-x: -102%;
   --tw-translate-y: 2.5rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  cursor: pointer;
   flex-direction: column;
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
@@ -644,6 +645,10 @@ html,
   }
 }
 
+.testimony-left>* {
+  pointer-events: none;
+}
+
 .testimony-left>p {
   --tw-text-opacity: 1;
   color: hsl(220 13% 13% / var(--tw-text-opacity));
@@ -658,6 +663,7 @@ html,
   --tw-translate-x: 102%;
   --tw-translate-y: 2.5rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  cursor: pointer;
   flex-direction: column;
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
@@ -678,6 +684,10 @@ html,
     padding-bottom: 5rem;
     padding-top: 2.5rem;
   }
+}
+
+.testimony-right>* {
+  pointer-events: none;
 }
 
 .testimony-right>p {
@@ -1458,10 +1468,6 @@ html,
   height: 100vh;
 }
 
-.h-\[600px\] {
-  height: 600px;
-}
-
 .max-h-64 {
   max-height: 16rem;
 }
@@ -1496,6 +1502,10 @@ html,
 
 .w-2 {
   width: 0.5rem;
+}
+
+.w-24 {
+  width: 6rem;
 }
 
 .w-3 {
@@ -1561,10 +1571,6 @@ html,
 
 .w-screen {
   width: 100vw;
-}
-
-.w-24 {
-  width: 6rem;
 }
 
 .max-w-0 {
@@ -3970,6 +3976,10 @@ html,
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.ease-linear {
+  transition-timing-function: linear;
+}
+
 .ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
@@ -4043,6 +4053,11 @@ html,
 
 .hover\:opacity-50:hover {
   opacity: 0.5;
+}
+
+.hover\:drop-shadow-2xl:hover {
+  --tw-drop-shadow: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .hover\:filter:hover {
@@ -4142,14 +4157,6 @@ html,
 
   .sm\:h-\[216px\] {
     height: 216px;
-  }
-
-  .sm\:h-\[400px\] {
-    height: 400px;
-  }
-
-  .sm\:h-\[600px\] {
-    height: 600px;
   }
 
   .sm\:w-full {
